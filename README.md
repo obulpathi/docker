@@ -58,9 +58,54 @@
 #### Comments
 * Comments start with '#'
 
+#### FROM
+* It defines the base image to use to start the build process.
+* It can be any image, including the ones you have created previously.
+* If a FROM image is not found on the host, docker will try to find it (and download) from the docker image index.
+* It needs to be the first command declared inside a Dockerfile.
+* Usage: FROM [imagename]
+* Example: FROM ubuntu
+
+#### MAINTAINER
+* MAINTAINER Obulapathi N Challa<obulpathi@gmail.com>
+
+#### ENV
+* The ENV command is used to set the environment variables (one or more).
+* These variables consist of “key = value” pairs which can be accessed within the container by scripts and applications alike.
+* This functionality of docker offers an enormous amount of flexibility for running programs.
+* Usage: ENV key value
+* Example: ENV SERVER_WORKS 4
+
+#### USER
+* The USER directive is used to set the UID (or username) which is to run the container based on the image being built.
+* Usage: USER [UID]
+* Example: USER 7511
+
 #### ADD
 * Usage: ADD [source directory or URL] [destination directory]
 * Copies the files from the source into the container
+
+#### VOLUME
+* The VOLUME command is used to enable access from your container to a directory on the host machine (i.e. mounting it).
+* Usage: VOLUME ["/dir_1", "/dir_2" ..]
+* Example: VOLUME ["/my_files"]
+
+#### WORKDIR
+* The WORKDIR directive is used to set where the command defined with CMD is to be executed.
+* Usage: WORKDIR /path
+* Example: WORKDIR ~/
+
+#### RUN
+* The RUN command is the central executing directive for Dockerfiles.
+* It takes a command as its argument and runs it to form the image.
+* Unlike CMD, it actually is used to build the image (forming another layer on top of the previous one which is committed).
+* Usage: RUN [command]
+* Example: RUN aptitude install -y riak
+
+#### EXPOSE
+* The EXPOSE command is used to associate a specified port to enable networking between the running process inside the container and the outside world (i.e. the host).
+* Usage: EXPOSE [port]
+* Example: EXPOSE 8080
 
 #### CMD
 * The command CMD is used for executing a specific command.
@@ -75,48 +120,3 @@
 * Usage: ENTRYPOINT application "argument", "argument", ..
 * Example: CMD "Hello docker!"
 * Example: ENTRYPOINT echo  
-
-#### ENV
-* The ENV command is used to set the environment variables (one or more).
-* These variables consist of “key = value” pairs which can be accessed within the container by scripts and applications alike.
-* This functionality of docker offers an enormous amount of flexibility for running programs.
-* Usage: ENV key value
-* Example: ENV SERVER_WORKS 4
-
-#### EXPOSE
-* The EXPOSE command is used to associate a specified port to enable networking between the running process inside the container and the outside world (i.e. the host).
-* Usage: EXPOSE [port]
-* Example: EXPOSE 8080
-
-#### FROM
-* It defines the base image to use to start the build process.
-* It can be any image, including the ones you have created previously.
-* If a FROM image is not found on the host, docker will try to find it (and download) from the docker image index.
-* It needs to be the first command declared inside a Dockerfile.
-* Usage: FROM [imagename]
-* Example: FROM ubuntu
-
-#### RUN
-* The RUN command is the central executing directive for Dockerfiles.
-* It takes a command as its argument and runs it to form the image.
-* Unlike CMD, it actually is used to build the image (forming another layer on top of the previous one which is committed).
-* Usage: RUN [command]
-* Example: RUN aptitude install -y riak
-
-#### USER
-* The USER directive is used to set the UID (or username) which is to run the container based on the image being built.
-* Usage: USER [UID]
-* Example: USER 751
-
-#### VOLUME
-* The VOLUME command is used to enable access from your container to a directory on the host machine (i.e. mounting it).
-* Usage: VOLUME ["/dir_1", "/dir_2" ..]
-* Example: VOLUME ["/my_files"]
-
-#### WORKDIR
-* The WORKDIR directive is used to set where the command defined with CMD is to be executed.
-* Usage: WORKDIR /path
-* Example: WORKDIR ~/
-
-#### MAINTAINER
-* MAINTAINER Obulapathi N Challa
