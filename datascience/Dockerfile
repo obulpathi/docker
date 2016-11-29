@@ -1,6 +1,6 @@
 FROM ubuntu:14.04
 
-MAINTAINER Craig Citro <craigcitro@google.com>
+MAINTAINER Obul <obulpathi@google.com>
 
 # Pick up some TF dependencies
 RUN apt-get update && apt-get install -y --no-install-recommends \
@@ -30,9 +30,15 @@ RUN pip --no-cache-dir install \
         numpy \
         scipy \
         sklearn \
+        awscli \
+        requests \
+        pandas \
+        scikit-learn \
         Pillow \
         && \
     python -m ipykernel.kernelspec
+
+ADD aws /root/.aws
 
 ENV TENSORFLOW_VERSION 0.11.0
 
