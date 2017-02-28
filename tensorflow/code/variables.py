@@ -4,7 +4,7 @@ x = tf.Variable(tf.constant(2))
 y = tf.Variable(tf.constant(3))
 z = x * y
 
-init = tf.initialize_all_variables()
+init = tf.global_variables_initializer()
 
 session = tf.Session()
 

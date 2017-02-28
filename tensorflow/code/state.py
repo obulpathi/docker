@@ -4,7 +4,7 @@ state = tf.Variable(0, name="counter")
 new_value = tf.add(state, tf.constant(1))
 update = tf.assign(state, new_value)
 
-init = tf.initialize_all_variables()
+init = tf.global_variables_initializer()
 session = tf.Session()
 session.run(init)
 
