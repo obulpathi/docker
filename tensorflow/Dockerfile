@@ -11,3 +11,10 @@ RUN apt-get install --yes python-pip python-dev
 
 # Install NumPy and TensorFlow
 RUN pip install numpy tensorflow
+
+# Copy the code
+RUN mkdir -p /code
+COPY code /code
+WORKDIR /code
+
+CMD ["/bin/bash"]
