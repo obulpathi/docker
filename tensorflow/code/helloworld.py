@@ -6,3 +6,12 @@ z = x * y
 
 session = tf.Session()
 print(session.run(z))
+
+######################
+
+x = tf.constant("Hello, ")
+y = tf.constant("World!")
+z = x + y
+
+session = tf.Session()
+print(session.run(z))
